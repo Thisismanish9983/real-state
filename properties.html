@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Properties — EstatePro Luxury Real Estate</title>
+  <meta name="description" content="Explore our complete portfolio of luxury homes, villas, lofts, and penthouses. Filter by location, price, and property type.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ================= HEADER & NAVBAR ================= -->
+  <header class="header">
+    <div class="container navbar">
+      <!-- Brand Logo -->
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i class="fa-solid fa-building-circle-check"></i>
+        </div>
+        <span>Estate<span class="logo-dot">Pro</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="properties.html" class="nav-link active">Properties</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Nav Actions (Favorites & CTA) -->
+      <div class="nav-actions">
+        <button type="button" class="btn-favorites" title="View Saved Properties">
+          <i class="fa-regular fa-heart"></i>
+          <span class="fav-badge" id="favCountBadge">0</span>
+        </button>
+        <a href="contact.html" class="btn btn-primary">
+          <i class="fa-solid fa-phone"></i> Contact Agent
+        </a>
+        <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Open mobile menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-backdrop" id="mobileBackdrop"></div>
+  <aside class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-building-circle-check"></i></div>
+        <span>Estate<span class="logo-dot">Pro</span></span>
+      </div>
+      <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="properties.html" class="mobile-nav-link active">Properties <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About Us <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="#" class="mobile-nav-link" id="mobileFavTrigger">Saved Properties (<span class="fav-badge" style="position:static; display:inline-flex;">0</span>) <i class="fa-solid fa-heart"></i></a>
+    </div>
+    <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-light);">
+      <a href="contact.html" class="btn btn-primary" style="width: 100%; justify-content: center;">
+        Schedule a Private Tour
+      </a>
+    </div>
+  </aside>
+
+  <!-- Favorites Slide-Over Drawer -->
+  <div class="mobile-nav-backdrop" id="drawerBackdrop"></div>
+  <div class="favorites-drawer" id="favoritesDrawer">
+    <div class="drawer-header">
+      <h3><i class="fa-solid fa-heart" style="color: var(--accent-primary);"></i> Saved Properties</h3>
+      <button type="button" class="drawer-close" id="drawerClose" aria-label="Close saved properties">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="drawer-body" id="favDrawerBody">
+      <!-- Populated dynamically via JS -->
+    </div>
+  </div>
+
+  <main>
+    <!-- ================= PAGE HERO BANNER ================= -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+          <span>Properties</span>
+        </div>
+        <h1 class="page-title">Explore Available Properties</h1>
+        <p class="page-subtitle">
+          Search, filter, and discover luxury estates, penthouses, modern villas, and urban lofts across leading prime destinations.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= MAIN CATALOG CONTENT ================= -->
+    <section class="section" style="padding-top: 2.5rem;">
+      <div class="container">
+        
+        <!-- Comprehensive Filter Card -->
+        <div class="filter-card">
+          <div class="filter-grid">
+            <!-- Keyword Search -->
+            <div class="filter-group">
+              <label for="filterKeyword"><i class="fa-solid fa-magnifying-glass"></i> Keyword</label>
+              <input type="text" id="filterKeyword" class="filter-control" placeholder="Search by name, address, or feature...">
+            </div>
+
+            <!-- Location Filter -->
+            <div class="filter-group">
+              <label for="filterLocation"><i class="fa-solid fa-location-dot"></i> Location</label>
+              <select id="filterLocation" class="filter-control">
+                <option value="all">All Locations</option>
+                <option value="Beverly Hills">Beverly Hills, CA</option>
+                <option value="New York">Manhattan, NY</option>
+                <option value="Miami">Miami Beach, FL</option>
+                <option value="Austin">Austin & Dallas, TX</option>
+                <option value="Aspen">Aspen, CO</option>
+                <option value="Seattle">Seattle, WA</option>
+                <option value="Chicago">Chicago, IL</option>
+              </select>
+            </div>
+
+            <!-- Property Type Filter -->
+            <div class="filter-group">
+              <label for="filterType"><i class="fa-solid fa-house"></i> Property Type</label>
+              <select id="filterType" class="filter-control">
+                <option value="all">All Types</option>
+                <option value="Villa">Villa</option>
+                <option value="Penthouse">Penthouse</option>
+                <option value="House">Single Family House</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Loft">Loft</option>
+                <option value="Townhouse">Townhouse</option>
+              </select>
+            </div>
+
+            <!-- Status Filter -->
+            <div class="filter-group">
+              <label for="filterStatus"><i class="fa-solid fa-tag"></i> Status</label>
+              <select id="filterStatus" class="filter-control">
+                <option value="all">Buy & Rent</option>
+                <option value="For Sale">For Sale</option>
+                <option value="For Rent">For Rent</option>
+              </select>
+            </div>
+
+            <!-- Price Range Filter (Min) -->
+            <div class="filter-group">
+              <label for="filterMinPrice"><i class="fa-solid fa-dollar-sign"></i> Min Price</label>
+              <select id="filterMinPrice" class="filter-control">
+                <option value="">No Minimum</option>
+                <option value="1000000">$1,000,000</option>
+                <option value="2000000">$2,000,000</option>
+                <option value="3000000">$3,000,000</option>
+                <option value="4000000">$4,000,000</option>
+              </select>
+            </div>
+
+            <!-- Price Range Filter (Max) -->
+            <div class="filter-group">
+              <label for="filterMaxPrice"><i class="fa-solid fa-dollar-sign"></i> Max Price</label>
+              <select id="filterMaxPrice" class="filter-control">
+                <option value="">No Maximum</option>
+                <option value="2000000">$2,000,000</option>
+                <option value="3500000">$3,500,000</option>
+                <option value="5000000">$5,000,000</option>
+                <option value="7000000">$7,000,000+</option>
+              </select>
+            </div>
+
+            <!-- Reset Button -->
+            <div class="filter-group" style="align-self: flex-end;">
+              <button type="button" id="resetFiltersBtn" class="btn btn-outline" style="width: 100%;" title="Reset All Filters">
+                <i class="fa-solid fa-rotate-left"></i> Reset
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Catalog Controls Bar (Counter, Sorting, Grid/List Toggles) -->
+        <div class="catalog-controls">
+          <div class="results-count" id="resultsCount">
+            Showing <strong>12</strong> of <strong>12</strong> properties
+          </div>
+
+          <div class="catalog-actions">
+            <!-- Price Sorting -->
+            <div class="sort-wrapper">
+              <label for="sortProperties"><i class="fa-solid fa-arrow-down-wide-short"></i> Sort By:</label>
+              <select id="sortProperties" class="sort-select">
+                <option value="featured">Featured First</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="area-high">Area: Largest First</option>
+              </select>
+            </div>
+
+            <!-- Grid vs List View Toggles -->
+            <div class="view-toggles" role="group" aria-label="Layout toggle">
+              <button type="button" id="viewGridBtn" class="view-btn active" title="Grid View" aria-label="Grid View">
+                <i class="fa-solid fa-border-all"></i>
+              </button>
+              <button type="button" id="viewListBtn" class="view-btn" title="List View" aria-label="List View">
+                <i class="fa-solid fa-list"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Properties Grid Container (Populated via JS) -->
+        <div class="properties-grid" id="propertiesGrid">
+          <!-- Fallback items rendered via main.js -->
+        </div>
+
+        <!-- Helpful Empty State when filters yield 0 results -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+          <div class="empty-icon">
+            <i class="fa-solid fa-house-circle-xmark"></i>
+          </div>
+          <h3>No Matching Properties Found</h3>
+          <p>We could not find any properties matching your current filter criteria. Try loosening your price boundaries or choosing "All Locations".</p>
+          <button type="button" class="btn btn-primary" onclick="document.getElementById('resetFiltersBtn').click()">
+            <i class="fa-solid fa-rotate-left"></i> Reset All Filters
+          </button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-building-circle-check"></i></div>
+            <span>Estate<span class="logo-dot">Pro</span></span>
+          </a>
+          <p class="footer-bio">
+            EstatePro is a premier real estate advisory firm dedicated to delivering bespoke architectural properties, transparent advice, and unmatched client service.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="properties.html">Browse Properties</a>
+            <a href="about.html">About EstatePro</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="properties.html?status=For+Sale">Homes For Sale</a>
+            <a href="properties.html?status=For+Rent">Luxury Rentals</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Property Types</h4>
+          <div class="footer-links">
+            <a href="properties.html?type=Villa">Luxury Villas</a>
+            <a href="properties.html?type=Penthouse">Penthouses</a>
+            <a href="properties.html?type=House">Single Family Homes</a>
+            <a href="properties.html?type=Apartment">Modern Apartments</a>
+            <a href="properties.html?type=Loft">Urban Lofts</a>
+            <a href="properties.html?type=Townhouse">Townhouses</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Stay Informed</h4>
+          <p class="newsletter-text">Subscribe to receive exclusive off-market listings and regional luxury market reports.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+            <button type="submit" class="btn btn-primary" aria-label="Subscribe">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+          <div style="margin-top: 1.5rem; font-size: 0.8125rem; color: #94a3b8; display: flex; flex-direction: column; gap: 0.5rem;">
+            <a href="contact.html" style="color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-location-dot" style="color: var(--accent-primary); width: 16px;"></i>
+              <span>9500 Wilshire Blvd, Beverly Hills, CA</span>
+            </a>
+            <a href="tel:+18005557325" style="color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-phone" style="color: var(--accent-primary); width: 16px;"></i>
+              <span>+1 (800) 555-REAL</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EstatePro Real Estate Inc. All rights reserved.</p>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="privacy-policy.html" style="color: inherit;">Privacy Policy</a>
+          <a href="terms-of-service.html" style="color: inherit;">Terms of Service</a>
+          <a href="terms-of-service.html#equal-housing" style="color: inherit;">Equal Housing Opportunity</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

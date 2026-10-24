@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — EstatePro Luxury Real Estate</title>
+  <meta name="description" content="Get in touch with EstatePro advisors. Contact our Beverly Hills, Manhattan, and Miami offices for private property consultations.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ================= HEADER & NAVBAR ================= -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-building-circle-check"></i></div>
+        <span>Estate<span class="logo-dot">Pro</span></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="properties.html" class="nav-link">Properties</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-favorites" title="View Saved Properties">
+          <i class="fa-regular fa-heart"></i>
+          <span class="fav-badge" id="favCountBadge">0</span>
+        </button>
+        <a href="properties.html" class="btn btn-outline">
+          <i class="fa-solid fa-magnifying-glass"></i> Explore Listings
+        </a>
+        <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Open mobile menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-backdrop" id="mobileBackdrop"></div>
+  <aside class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-building-circle-check"></i></div>
+        <span>Estate<span class="logo-dot">Pro</span></span>
+      </div>
+      <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="properties.html" class="mobile-nav-link">Properties <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About Us <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link active">Contact <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="#" class="mobile-nav-link" id="mobileFavTrigger">Saved Properties (<span class="fav-badge" style="position:static; display:inline-flex;">0</span>) <i class="fa-solid fa-heart"></i></a>
+    </div>
+    <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-light);">
+      <a href="contact.html" class="btn btn-primary" style="width: 100%; justify-content: center;">
+        Schedule a Private Tour
+      </a>
+    </div>
+  </aside>
+
+  <!-- Favorites Slide-Over Drawer -->
+  <div class="mobile-nav-backdrop" id="drawerBackdrop"></div>
+  <div class="favorites-drawer" id="favoritesDrawer">
+    <div class="drawer-header">
+      <h3><i class="fa-solid fa-heart" style="color: var(--accent-primary);"></i> Saved Properties</h3>
+      <button type="button" class="drawer-close" id="drawerClose" aria-label="Close saved properties">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="drawer-body" id="favDrawerBody">
+      <!-- Populated via JS -->
+    </div>
+  </div>
+
+  <main>
+    <!-- ================= PAGE HERO BANNER ================= -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+          <span>Contact Us</span>
+        </div>
+        <h1 class="page-title">Connect With Our Advisory Concierge</h1>
+        <p class="page-subtitle">
+          Have an inquiry regarding a listed property or wish to discuss listing your private estate? Our team is available 6 days a week.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section class="section">
+      <div class="container contact-layout">
+        
+        <!-- Left: Contact Information Cards -->
+        <div class="contact-info-panel">
+          
+          <!-- Office Address -->
+          <div class="info-card">
+            <div class="info-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="info-body">
+              <h4>Headquarters</h4>
+              <p>9500 Wilshire Boulevard, Suite 800<br>Beverly Hills, CA 90212</p>
+            </div>
+          </div>
+
+          <!-- Phone Numbers -->
+          <div class="info-card">
+            <div class="info-icon">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div class="info-body">
+              <h4>Direct Inquiries</h4>
+              <p>Toll Free: <a href="tel:+18005557325">+1 (800) 555-REAL</a></p>
+              <p>Beverly Hills Desk: <a href="tel:+13105550192">+1 (310) 555-0192</a></p>
+            </div>
+          </div>
+
+          <!-- Email Addresses -->
+          <div class="info-card">
+            <div class="info-icon">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="info-body">
+              <h4>Electronic Mail</h4>
+              <p>General Inquiries: <a href="mailto:inquire@estatepro.com">inquire@estatepro.com</a></p>
+              <p>Private Client Desk: <a href="mailto:private@estatepro.com">private@estatepro.com</a></p>
+            </div>
+          </div>
+
+          <!-- Working Hours -->
+          <div class="info-card">
+            <div class="info-icon">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <div class="info-body">
+              <h4>Advisory Office Hours</h4>
+              <p>Monday – Friday: 8:30 AM – 7:00 PM PST</p>
+              <p>Saturday: 9:00 AM – 4:00 PM PST</p>
+              <p style="color: var(--text-muted); font-size: 0.8125rem;">Sunday: Private Viewings by Pre-Arranged Appointment</p>
+            </div>
+          </div>
+
+          <!-- Map Mockup / Showcase Card -->
+          <div class="map-card">
+            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80" alt="Beverly Hills Real Estate Map Overview">
+            <div class="map-overlay">
+              <div class="map-overlay-info">
+                <h5>Beverly Hills Headquarters</h5>
+                <p>Valet parking available at Wilshire entrance</p>
+              </div>
+              <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                Get Directions
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Interactive Contact Form -->
+        <div class="contact-form-card">
+          <div style="margin-bottom: 2rem;">
+            <div class="section-badge" style="margin-bottom: 0.5rem;">
+              <i class="fa-solid fa-paper-plane"></i> Direct Message
+            </div>
+            <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--navy-900); margin-bottom: 0.5rem;">
+              Send an Advisory Request
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem;">
+              Complete the form below and our regional partner will get in touch with you within 24 hours.
+            </p>
+          </div>
+
+          <form id="contactPageForm" novalidate>
+            <!-- Name & Email Row -->
+            <div class="form-row" style="margin-bottom: 1.25rem;">
+              <div class="form-group">
+                <label for="contactName">Full Name *</label>
+                <input type="text" id="contactName" class="form-input" placeholder="e.g. Eleanor Vance">
+                <span class="error-message" id="contactNameError">Please enter your full name (minimum 2 characters).</span>
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email Address *</label>
+                <input type="email" id="contactEmail" class="form-input" placeholder="e.g. eleanor@vance.com">
+                <span class="error-message" id="contactEmailError">Please enter a valid email address.</span>
+              </div>
+            </div>
+
+            <!-- Phone & Inquiry Type Row -->
+            <div class="form-row" style="margin-bottom: 1.25rem;">
+              <div class="form-group">
+                <label for="contactPhone">Phone Number *</label>
+                <input type="tel" id="contactPhone" class="form-input" placeholder="e.g. +1 (310) 555-0199">
+                <span class="error-message" id="contactPhoneError">Please enter a valid phone number.</span>
+              </div>
+              <div class="form-group">
+                <label for="contactType">Reason for Inquiry</label>
+                <select id="contactType" class="form-input">
+                  <option value="buying">Purchasing a Property</option>
+                  <option value="selling">Selling an Estate</option>
+                  <option value="leasing">Luxury Leasing</option>
+                  <option value="valuation">Confidential Portfolio Valuation</option>
+                  <option value="partnership">Media & Architectural Partnership</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Subject -->
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+              <label for="contactSubject">Subject Line *</label>
+              <input type="text" id="contactSubject" class="form-input" placeholder="e.g. Inquiring regarding Beverly Hills residences">
+              <span class="error-message" id="contactSubjectError">Please specify a subject for your message.</span>
+            </div>
+
+            <!-- Message -->
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+              <label for="contactMessage">Message *</label>
+              <textarea id="contactMessage" class="form-textarea" rows="4" placeholder="Describe your property criteria, timeline, or preferred consultation dates..."></textarea>
+              <span class="error-message" id="contactMessageError">Please enter a message containing at least 10 characters.</span>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              <i class="fa-solid fa-paper-plane"></i> Submit Inquiry
+            </button>
+
+            <!-- Friendly Demo Disclaimer -->
+            <div style="margin-top: 1.25rem; text-align: center; font-size: 0.8125rem; color: var(--text-muted);">
+              <i class="fa-solid fa-shield-halved" style="color: var(--accent-primary);"></i> Frontend Demo: Validated inputs trigger an instant interactive confirmation modal without requiring backend mail servers.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= FAQ SECTION ================= -->
+    <section class="section section-secondary">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fa-solid fa-circle-question"></i> Client FAQ
+          </div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Answers to common questions regarding purchasing, private viewings, and real estate representation with EstatePro.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <!-- FAQ 1 -->
+          <div class="faq-item active">
+            <button type="button" class="faq-question">
+              <span>How do I schedule a private viewing of a listed property?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                You can easily request a private showing directly from the respective property details page using the "Schedule a Private Showing" form, or by contacting our concierge desk directly at +1 (800) 555-REAL. Our advisors coordinate private escorted walkthroughs at your convenience.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>Are all properties listed on EstatePro verified and current?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. Every single listing in our catalog undergoes rigorous compliance verification, boundary checks, and title status validation by licensed regional advisors prior to public or private indexing.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>Do you represent international buyers or cross-country relocations?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Approximately 35% of our clientele consists of cross-border purchasers, international family offices, and executives relocating to major hubs. We offer full remote virtual video inspections, notary coordination, and escrow management.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>What is EstatePro's advisory fee structure for sellers?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                We provide competitive, transparent commission models tailored to each architectural estate's marketing scope—including bespoke 4K drone cinematography, custom architectural publications, and targeted international buyer distribution with zero hidden retainers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-building-circle-check"></i></div>
+            <span>Estate<span class="logo-dot">Pro</span></span>
+          </a>
+          <p class="footer-bio">
+            EstatePro is a premier real estate advisory firm dedicated to delivering bespoke architectural properties, transparent advice, and unmatched client service.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="properties.html">Browse Properties</a>
+            <a href="about.html">About EstatePro</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="properties.html?status=For+Sale">Homes For Sale</a>
+            <a href="properties.html?status=For+Rent">Luxury Rentals</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Property Types</h4>
+          <div class="footer-links">
+            <a href="properties.html?type=Villa">Luxury Villas</a>
+            <a href="properties.html?type=Penthouse">Penthouses</a>
+            <a href="properties.html?type=House">Single Family Homes</a>
+            <a href="properties.html?type=Apartment">Modern Apartments</a>
+            <a href="properties.html?type=Loft">Urban Lofts</a>
+            <a href="properties.html?type=Townhouse">Townhouses</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Stay Informed</h4>
+          <p class="newsletter-text">Subscribe to receive exclusive off-market listings and regional luxury market reports.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+            <button type="submit" class="btn btn-primary" aria-label="Subscribe">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+          <div style="margin-top: 1.5rem; font-size: 0.8125rem; color: #94a3b8; display: flex; flex-direction: column; gap: 0.5rem;">
+            <a href="contact.html" style="color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-location-dot" style="color: var(--accent-primary); width: 16px;"></i>
+              <span>9500 Wilshire Blvd, Beverly Hills, CA</span>
+            </a>
+            <a href="tel:+18005557325" style="color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-phone" style="color: var(--accent-primary); width: 16px;"></i>
+              <span>+1 (800) 555-REAL</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EstatePro Real Estate Inc. All rights reserved.</p>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="privacy-policy.html" style="color: inherit;">Privacy Policy</a>
+          <a href="terms-of-service.html" style="color: inherit;">Terms of Service</a>
+          <a href="terms-of-service.html#equal-housing" style="color: inherit;">Equal Housing Opportunity</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

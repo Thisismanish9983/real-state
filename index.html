@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EstatePro — Modern Real Estate & Luxury Living</title>
+  <meta name="description" content="Discover premium homes, luxury villas, and exclusive apartments for sale and rent with EstatePro. Your trusted modern real estate partner.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ================= HEADER & NAVBAR ================= -->
+  <header class="header">
+    <div class="container navbar">
+      <!-- Brand Logo -->
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i class="fa-solid fa-building-circle-check"></i>
+        </div>
+        <span>Estate<span class="logo-dot">Pro</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="properties.html" class="nav-link">Properties</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Nav Actions (Favorites & CTA) -->
+      <div class="nav-actions">
+        <button type="button" class="btn-favorites" title="View Saved Properties">
+          <i class="fa-regular fa-heart"></i>
+          <span class="fav-badge" id="favCountBadge">0</span>
+        </button>
+        <a href="properties.html" class="btn btn-primary">
+          <i class="fa-solid fa-magnifying-glass"></i> Explore Properties
+        </a>
+        <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Open mobile menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-backdrop" id="mobileBackdrop"></div>
+  <aside class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-building-circle-check"></i></div>
+        <span>Estate<span class="logo-dot">Pro</span></span>
+      </div>
+      <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="properties.html" class="mobile-nav-link">Properties <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About Us <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="#" class="mobile-nav-link" id="mobileFavTrigger">Saved Properties (<span class="fav-badge" style="position:static; display:inline-flex;">0</span>) <i class="fa-solid fa-heart"></i></a>
+    </div>
+    <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-light);">
+      <a href="contact.html" class="btn btn-primary" style="width: 100%; justify-content: center;">
+        Schedule a Private Tour
+      </a>
+    </div>
+  </aside>
+
+  <!-- Favorites Slide-Over Drawer -->
+  <div class="mobile-nav-backdrop" id="drawerBackdrop"></div>
+  <div class="favorites-drawer" id="favoritesDrawer">
+    <div class="drawer-header">
+      <h3><i class="fa-solid fa-heart" style="color: var(--accent-primary);"></i> Saved Properties</h3>
+      <button type="button" class="drawer-close" id="drawerClose" aria-label="Close saved properties">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="drawer-body" id="favDrawerBody">
+      <!-- Populated dynamically via JS -->
+    </div>
+  </div>
+
+  <main>
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <!-- Left Content -->
+        <div class="hero-content">
+          <div class="hero-tag">
+            <i class="fa-solid fa-gem"></i> Curated Luxury Residences
+          </div>
+          <h1 class="hero-title">
+            Find Your Place <span>to Call Home</span>
+          </h1>
+          <p class="hero-description">
+            Explore premier properties, architect-designed estates, and urban luxury apartments in the world's most desirable neighborhoods with personalized client guidance.
+          </p>
+
+          <!-- Interactive Search Bar Component -->
+          <div class="hero-search-container">
+            <div class="search-tabs">
+              <button type="button" class="search-tab-btn active" data-status="all">All</button>
+              <button type="button" class="search-tab-btn" data-status="For Sale">Buy</button>
+              <button type="button" class="search-tab-btn" data-status="For Rent">Rent</button>
+            </div>
+            <form id="heroSearchForm" class="search-form">
+              <!-- Location -->
+              <div class="search-field">
+                <label class="search-label" for="heroSearchLocation">
+                  <i class="fa-solid fa-location-dot"></i> Location
+                </label>
+                <select id="heroSearchLocation" class="search-select">
+                  <option value="all">Any Location</option>
+                  <option value="Beverly Hills">Beverly Hills, CA</option>
+                  <option value="New York">Manhattan, NY</option>
+                  <option value="Miami">Miami Beach, FL</option>
+                  <option value="Austin">Austin, TX</option>
+                  <option value="Aspen">Aspen, CO</option>
+                  <option value="Seattle">Seattle, WA</option>
+                  <option value="Chicago">Chicago, IL</option>
+                </select>
+              </div>
+
+              <!-- Property Type -->
+              <div class="search-field">
+                <label class="search-label" for="heroSearchType">
+                  <i class="fa-solid fa-house"></i> Property Type
+                </label>
+                <select id="heroSearchType" class="search-select">
+                  <option value="all">All Types</option>
+                  <option value="Villa">Villa</option>
+                  <option value="Penthouse">Penthouse</option>
+                  <option value="House">Single Family House</option>
+                  <option value="Apartment">Apartment</option>
+                  <option value="Loft">Urban Loft</option>
+                  <option value="Townhouse">Townhouse</option>
+                </select>
+              </div>
+
+              <!-- Min Price -->
+              <div class="search-field">
+                <label class="search-label" for="heroSearchMinPrice">
+                  <i class="fa-solid fa-dollar-sign"></i> Min Price
+                </label>
+                <select id="heroSearchMinPrice" class="search-select">
+                  <option value="">No Min</option>
+                  <option value="500000">$500,000</option>
+                  <option value="1000000">$1,000,000</option>
+                  <option value="2000000">$2,000,000</option>
+                  <option value="3000000">$3,000,000</option>
+                </select>
+              </div>
+
+              <!-- Max Price -->
+              <div class="search-field">
+                <label class="search-label" for="heroSearchMaxPrice">
+                  <i class="fa-solid fa-dollar-sign"></i> Max Price
+                </label>
+                <select id="heroSearchMaxPrice" class="search-select">
+                  <option value="">No Max</option>
+                  <option value="2000000">$2,000,000</option>
+                  <option value="3500000">$3,500,000</option>
+                  <option value="5000000">$5,000,000</option>
+                  <option value="7000000">$7,000,000+</option>
+                </select>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i> Search
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right Visual Showcase -->
+        <div class="hero-visual">
+          <div class="hero-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Luxury Villa Architecture">
+          </div>
+          <!-- Floating Badge 1 -->
+          <div class="hero-floating-card card-top">
+            <div class="floating-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="floating-text">
+              <h4>100% Verified</h4>
+              <p>Legal & Title Checked</p>
+            </div>
+          </div>
+          <!-- Floating Badge 2 -->
+          <div class="hero-floating-card card-bottom">
+            <div class="floating-icon">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <div class="floating-text">
+              <h4>4.98 / 5 Rating</h4>
+              <p>Over 1,200+ Client Reviews</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STATS BAR ================= -->
+    <section class="stats-bar">
+      <div class="container stats-grid">
+        <div class="stat-item">
+          <h3>$2.4B<span>+</span></h3>
+          <p>Total Real Estate Closed</p>
+        </div>
+        <div class="stat-item">
+          <h3>1,450<span>+</span></h3>
+          <p>Luxury Properties Listed</p>
+        </div>
+        <div class="stat-item">
+          <h3>99.4<span>%</span></h3>
+          <p>Client Satisfaction Rate</p>
+        </div>
+        <div class="stat-item">
+          <h3>18<span>+</span></h3>
+          <p>Years Industry Leadership</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURED PROPERTIES ================= -->
+    <section class="section section-secondary">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fa-solid fa-sparkles"></i> Exclusive Collection
+          </div>
+          <h2 class="section-title">Featured Properties</h2>
+          <p class="section-subtitle">
+            Explore our hand-picked portfolio of extraordinary estates, penthouses, and modern architectural residences available for purchase and lease.
+          </p>
+        </div>
+
+        <!-- Property Grid Container (Populated via JS with 6 featured listings) -->
+        <div class="properties-grid" id="featuredPropertiesGrid">
+          <!-- Populated by assets/js/main.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 3.5rem;">
+          <a href="properties.html" class="btn btn-primary btn-lg">
+            View All Properties <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BUY, RENT, SELL SERVICES ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fa-solid fa-briefcase"></i> Tailored Services
+          </div>
+          <h2 class="section-title">Buy, Rent, or Sell With Confidence</h2>
+          <p class="section-subtitle">
+            Whether acquiring your forever home, securing an executive lease, or negotiating top-dollar for your property, our team delivers seamless execution.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Buy Card -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-house-chimney"></i>
+            </div>
+            <h3>Buy a Property</h3>
+            <p>
+              Gain priority access to off-market luxury residences, neighborhood pricing intelligence, and bespoke property tours with experienced advisors.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check"></i> Private & Off-Market Listings</li>
+              <li><i class="fa-solid fa-circle-check"></i> Comprehensive Title & Legal Review</li>
+              <li><i class="fa-solid fa-circle-check"></i> Tailored Mortgage Negotiation</li>
+            </ul>
+            <a href="properties.html?status=For+Sale" class="btn btn-outline">Find Homes for Sale</a>
+          </div>
+
+          <!-- Rent Card -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-key"></i>
+            </div>
+            <h3>Rent a Home</h3>
+            <p>
+              Discover high-end rentals and executive corporate apartments with flexible lease options, vetted management, and prime urban locations.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check"></i> Curated Luxury Penthouses & Lofts</li>
+              <li><i class="fa-solid fa-circle-check"></i> Fast Digital Lease Applications</li>
+              <li><i class="fa-solid fa-circle-check"></i> Responsive Concierge Support</li>
+            </ul>
+            <a href="properties.html?status=For+Rent" class="btn btn-outline">Browse Luxury Rentals</a>
+          </div>
+
+          <!-- Sell Card -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3>Sell Your Property</h3>
+            <p>
+              Maximize your home's valuation with high-production 4K video tours, global architectural press distribution, and qualified buyer matchmaking.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check"></i> Professional Cinematic Staging</li>
+              <li><i class="fa-solid fa-circle-check"></i> Worldwide High-Net-Worth Reach</li>
+              <li><i class="fa-solid fa-circle-check"></i> Record-Setting Neighborhood Sales</li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline">Request Home Valuation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WHY CHOOSE US ================= -->
+    <section class="section section-secondary">
+      <div class="container why-us-grid">
+        <!-- Left Content -->
+        <div>
+          <div class="section-badge">
+            <i class="fa-solid fa-award"></i> The EstatePro Advantage
+          </div>
+          <h2 class="section-title">Why Discerning Clients Choose EstatePro</h2>
+          <p class="section-subtitle">
+            We operate at the intersection of modern technology and high-touch private client representation to deliver an effortless real estate journey.
+          </p>
+
+          <div class="why-features">
+            <div class="why-feature-item">
+              <div class="why-icon">
+                <i class="fa-solid fa-certificate"></i>
+              </div>
+              <h4>100% Verified Listings</h4>
+              <p>Every home undergoes a strict legal audit, square footage verification, and structural appraisal.</p>
+            </div>
+
+            <div class="why-feature-item">
+              <div class="why-icon">
+                <i class="fa-solid fa-handshake-angle"></i>
+              </div>
+              <h4>Zero Hidden Fees</h4>
+              <p>Total transparency with no surprise closing markups or advisory retainers.</p>
+            </div>
+
+            <div class="why-feature-item">
+              <div class="why-icon">
+                <i class="fa-solid fa-user-tie"></i>
+              </div>
+              <h4>Top 1% Licensed Advisors</h4>
+              <p>Partner with regional specialists ranked among the top producers nationwide.</p>
+            </div>
+
+            <div class="why-feature-item">
+              <div class="why-icon">
+                <i class="fa-solid fa-shield-heart"></i>
+              </div>
+              <h4>Private Client Discretion</h4>
+              <p>NDA-backed transaction management ensuring maximum confidentiality and security.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Visual with Experience Badge -->
+        <div class="why-visual">
+          <div class="why-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Modern Architecture Detail">
+          </div>
+          <div class="why-experience-badge">
+            <h3>18+</h3>
+            <p>Years of Architectural Excellence & Advisory</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CUSTOMER TESTIMONIALS ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <i class="fa-solid fa-comments"></i> Client Testimonials
+          </div>
+          <h2 class="section-title">Trusted by Hundreds of Homeowners</h2>
+          <p class="section-subtitle">
+            Hear directly from buyers, sellers, and luxury investors who trusted EstatePro to negotiate their real estate transactions.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "EstatePro made purchasing our Beverly Hills home an absolute breeze. Victoria Sterling negotiated $180,000 below the seller's asking price and handled all inspections seamlessly."
+            </p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Julianna Croft" class="testimonial-avatar">
+              <div class="testimonial-info">
+                <h4>Julianna Croft</h4>
+                <p>Tech Executive, Beverly Hills</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "We listed our Manhattan penthouse with Marcus Vance and received three full-cash offers within seven days of the architectural launch. The marketing was world-class."
+            </p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Arthur Pendelton" class="testimonial-avatar">
+              <div class="testimonial-info">
+                <h4>Arthur Pendelton</h4>
+                <p>Private Equity Partner, NYC</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "Relocating our family from London to Miami was daunting, but Elena found us the perfect waterfront residence in Biscayne Bay with private boat slip. Exceptional professionalism."
+            </p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Sophie Laurent" class="testimonial-avatar">
+              <div class="testimonial-info">
+                <h4>Sophie Laurent</h4>
+                <p>Design Director, Miami Beach</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA BANNER ================= -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-content">
+            <h2 class="cta-title">Looking to Buy, Sell, or Invest in Real Estate?</h2>
+            <p class="cta-text">
+              Speak directly with an accredited senior advisor today. We provide confidential consultations, off-market opportunities, and property valuations.
+            </p>
+            <div class="cta-actions">
+              <a href="contact.html" class="btn btn-primary btn-lg">
+                <i class="fa-solid fa-phone"></i> Schedule Consultation
+              </a>
+              <a href="properties.html" class="btn btn-outline-white btn-lg">
+                Explore Listings
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-building-circle-check"></i></div>
+            <span>Estate<span class="logo-dot">Pro</span></span>
+          </a>
+          <p class="footer-bio">
+            EstatePro is a premier real estate advisory firm dedicated to delivering bespoke architectural properties, transparent advice, and unmatched client service.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="properties.html">Browse Properties</a>
+            <a href="about.html">About EstatePro</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="properties.html?status=For+Sale">Homes For Sale</a>
+            <a href="properties.html?status=For+Rent">Luxury Rentals</a>
+          </div>
+        </div>
+
+        <!-- Property Types -->
+        <div class="footer-col">
+          <h4>Property Types</h4>
+          <div class="footer-links">
+            <a href="properties.html?type=Villa">Luxury Villas</a>
+            <a href="properties.html?type=Penthouse">Penthouses</a>
+            <a href="properties.html?type=House">Single Family Homes</a>
+            <a href="properties.html?type=Apartment">Modern Apartments</a>
+            <a href="properties.html?type=Loft">Urban Lofts</a>
+            <a href="properties.html?type=Townhouse">Townhouses</a>
+          </div>
+        </div>
+
+        <!-- Contact & Newsletter -->
+        <div class="footer-col">
+          <h4>Stay Informed</h4>
+          <p class="newsletter-text">Subscribe to receive exclusive off-market listings and regional luxury market reports.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+            <button type="submit" class="btn btn-primary" aria-label="Subscribe">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+          <div style="margin-top: 1.5rem; font-size: 0.8125rem; color: #94a3b8; display: flex; flex-direction: column; gap: 0.5rem;">
+            <a href="contact.html" style="color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-location-dot" style="color: var(--accent-primary); width: 16px;"></i>
+              <span>9500 Wilshire Blvd, Beverly Hills, CA</span>
+            </a>
+            <a href="tel:+18005557325" style="color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-phone" style="color: var(--accent-primary); width: 16px;"></i>
+              <span>+1 (800) 555-REAL</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 EstatePro Real Estate Inc. All rights reserved.</p>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="privacy-policy.html" style="color: inherit;">Privacy Policy</a>
+          <a href="terms-of-service.html" style="color: inherit;">Terms of Service</a>
+          <a href="terms-of-service.html#equal-housing" style="color: inherit;">Equal Housing Opportunity</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1007,8 +1007,8 @@ function initPropertyDetailsPage() {
         const clientName = document.getElementById('agentClientName').value.trim();
         openDemoModal({
           title: "Inquiry Submitted Successfully!",
-          badge: "Demo Inquiries Live Preview",
-          message: `Thank you, <strong>${clientName}</strong>! Your inquiry regarding <strong>${property.title}</strong> has been logged. In a production environment, ${property.agent.name} would be notified immediately via secure webhook and SMS.`
+          badge: "Inquiry Confirmation",
+          message: `Thank you, <strong>${clientName}</strong>! Your inquiry regarding <strong>${property.title}</strong> has been received. Our advisory partner ${property.agent.name} will contact you shortly to confirm your showing.`
         });
         agentForm.reset();
       }
@@ -1208,8 +1208,8 @@ function initContactPage() {
       const clientName = name.value.trim();
       openDemoModal({
         title: "Message Sent Successfully!",
-        badge: "Demo Mode Demonstration",
-        message: `Thank you for reaching out, <strong>${clientName}</strong>. Our advisory concierge team has received your inquiry and will follow up with you within one business day.`
+        badge: "Inquiry Confirmation",
+        message: `Thank you for reaching out, <strong>${clientName}</strong>. Our advisory concierge team has received your message and will follow up with you within one business day.`
       });
       form.reset();
     }
@@ -1243,7 +1243,7 @@ function openDemoModal({ title, badge, message }) {
         <div class="modal-icon-success">
           <i class="fa-solid fa-circle-check"></i>
         </div>
-        <span class="modal-demo-badge" id="demoModalBadge">Frontend Demo Mode</span>
+        <span class="modal-demo-badge" id="demoModalBadge">Inquiry Received</span>
         <h3 class="modal-title" id="demoModalTitle">Success!</h3>
         <p class="modal-text" id="demoModalMessage">Your message has been safely received.</p>
         <button type="button" class="btn btn-primary" onclick="closeDemoModal()" style="width: 100%;">
